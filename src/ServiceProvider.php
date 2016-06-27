@@ -14,7 +14,7 @@ class ServiceProvider extends BaseServiceProvider
 #        'CachetHQ\Cachet\Bus\Events\Component\ComponentWasUpdatedEvent' => [Handlers\ComponentWasUpdated::class],
 #    ];
 
-    public function boot()
+    public function boot(DispatcherContract $events)
     {
         $events->listen('CachetHQ\Cachet\Bus\Events\Incident\IncidentWasReportedEvent', function () {
             \Log::debug('IncidentWasReportedEvent event called ...');
@@ -27,4 +27,5 @@ class ServiceProvider extends BaseServiceProvider
         });
     }
 
+    public function register(){}
 }
